@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("HelveticaNeue"),
+   url("./fonts/HelveticaNeue.ttc") format("truetype");
+  }

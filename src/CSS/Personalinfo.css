@@ -1,0 +1,107 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.leftside{
+    background: rgb(249,249,249);
+    height: 1080px;
+    width: 1098px;
+}
+.rightside{
+    position: absolute;
+    width: 822px;
+    height: 1080px;
+    right: 0px;
+    top: 0px;
+    background: #FFFFFF;
+}
+.headline{
+    position: absolute;
+width: 179px;
+height: 29px;
+left: 149px;
+top: 47px;
+
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+
+/* off black */
+
+color: #1A1A1A;
+}
+.pagenumber{
+ position: absolute;
+width: 29px;
+height: 24px;
+left: 920px;
+top: 49px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-align: right;
+color: #1A1A1A;
+}
+.firsthr {
+    position: absolute;
+width: 798px;
+height: 0px;
+left: 150px;
+top: 88px;
+border: 1px solid #1A1A1A;
+}
+.labelfornameandlastname{
+    width: 371px;
+    height: 21px;
+    font-family: 'HelveticaNeue';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 16px;
+    color: #000000;
+    margin-left: 24px;
+}
+.inputfornameandlastname{
+    width: 371px;
+    height: 48px;
+    margin-left: 24px;
+    
+    background: #FFFFFF;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    
+}
+.namediv{
+    width: 419px;
+    height: 122px;
+    top: 157px;
+    position: absolute;
+    left: 126px;
+}
+.smallname{
+width: 371px;
+height: 21px;
+margin-left: 24px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 21px;
+color: #2E2E2E;
+}
+.lastnamediv{
+    width: 419px;
+    height: 122px;
+    top: 157px;
+    position: absolute;
+    left: 552px;
+
+}
