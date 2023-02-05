@@ -105,3 +105,194 @@ color: #2E2E2E;
     left: 552px;
 
 }
+.uploadimagebutton{
+
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 12px;
+    gap: 10px;
+    position: absolute;
+    width: 107px;
+    height: 27px;
+    left: 401px;
+    top: 315px;
+    background: #0E80BF;
+    border-radius: 4px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+
+}
+.photolabel{
+    position: absolute;
+width: 232px;
+height: 22px;
+left: 150px;
+top: 325px;
+
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+color: #1A1A1A;
+}
+.aboutmediv{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px;
+gap: 8px;
+
+position: absolute;
+width: 846px;
+height: 148px;
+left: calc(50% - 846px/2 - 411px);
+top: 393px;
+}
+.aboutmelabel{
+ width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #000000;
+margin-left: 5px;
+}
+.aboutmetextarea{
+    width: 798px;
+height: 103px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+margin-left: 5px;
+}
+::placeholder { 
+    position: absolute;
+height: 21px;
+left: 16px;
+right: 16px;
+top: 13px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: rgba(0, 0, 0, 0.6);
+  }
+
+.emaildiv{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px;
+gap: 8px;
+
+position: absolute;
+width: 846px;
+height: 122px;
+left: calc(50% - 846px/2 - 411px);
+top: 558px;
+
+}
+.emailinput{
+box-sizing: border-box;
+width: 798px;
+height: 48px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+margin-left: 5px;
+}
+.emaillabel{
+    width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #000000;
+margin-left: 5px;
+}
+.smallemail{
+    width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #2E2E2E;
+margin-left: 5px;
+}
+
+.phonediv{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px;
+gap: 8px;
+
+position: absolute;
+width: 846px;
+height: 122px;
+left: calc(50% - 846px/2 - 411px);
+top: 693px;
+
+}
+.phoneinput{
+box-sizing: border-box;
+width: 798px;
+height: 48px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+margin-left: 5px;
+}
+.phonelabel{
+    width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #000000;
+margin-left: 5px;
+}
+.smallphone{
+    width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #2E2E2E;
+margin-left: 5px;
+}
