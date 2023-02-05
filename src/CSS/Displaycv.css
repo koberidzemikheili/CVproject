@@ -1,0 +1,101 @@
+.firstname{
+position: absolute;
+width: 123px;
+height: 42px;
+left: 80px;
+top: 68px;
+font-family: 'HelveticaNeue';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 42px;
+color: #F93B1D;
+}
+.lastname{
+    position: absolute;
+width: 145px;
+height: 42px;
+left: 223px;
+top: 68px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 42px;
+color: #F93B1D;
+}
+.displayimage{
+position: absolute;
+width: 246px;
+height: 246px;
+left: 501px;
+top: 48px;
+border-radius: 133px;
+}
+.email{
+    position: absolute;
+width: 179px;
+height: 21px;
+left: 111px;
+top: 127px;
+font-family: 'HelveticaNeue';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+color: #1A1A1A;
+}
+.vectorimg{
+ position: absolute;
+    left: -25px;
+    top: 2px;
+}
+.phone{
+position: absolute;
+width: 151px;
+height: 21px;
+left: 111px;
+top: 158px;
+font-family: 'HelveticaNeue';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+color: #1A1A1A;
+}
+.vectorphoneimg{
+ position: absolute;
+ left: -25px;
+ top: 1px;
+}
+.aboutme{
+position: absolute;
+width: 118px;
+height: 22px;
+left: 82px;
+top: 213px;
+font-family: 'HelveticaNeue';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+color: #F93B1D;
+}
+.aboutmetext{
+position: absolute;
+width: 432px;
+height: 72px;
+left: 80px;
+top: 250px;
+font-family: 'HelveticaNeue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 22px;
+text-transform: lowercase;
+color: #000000;
+}
+errors {
+    font-size: 10px;
+    color: #ff6774;
+  }

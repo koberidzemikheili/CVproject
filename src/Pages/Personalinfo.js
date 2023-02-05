@@ -3,17 +3,16 @@ import '../CSS/Personalinfo.css'
 import { UserContext } from '../UserContext';
 import React, { useContext, useEffect } from "react";
 import Displaycv from '../Displaycv';
+import { useForm } from 'react-hook-form';
 export default function Personalinfo () {
 
   const [Details, setDetails] = useContext(UserContext);
   const [Trigger, setTrigger] = useContext(UserContext);
-   
   useEffect(() => {
     if (typeof Details !== "string") {
       localStorage.setItem("Details", JSON.stringify(Details));
       //retriggers render because we had 1 render delay with setup of Details and setDetails the definition of IF IT WORKS DONT TOUCH IT
       setTrigger(Trigger+1);
-      console.log(Trigger);
     }
   }, [Details]);
   
@@ -32,7 +31,6 @@ export default function Personalinfo () {
       const { name, value } = e.target;
       if (name === 'firstname' || name === 'lastname' || name ==='image' || name ==='textarea' || name ==='email'|| name ==='phone') {
         setDetails({...JSON.parse(localStorage.getItem("Details")), [name]: value});
-        console.log(Details);
       }
     };
 
@@ -75,7 +73,6 @@ export default function Personalinfo () {
                 </form>
             </div>
             <div className='rightside'>
-                right
                 <Displaycv/>
             </div>
         </div>
