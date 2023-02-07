@@ -105,9 +105,7 @@ color: #2E2E2E;
     left: 552px;
 
 }
-.uploadimagebutton{
 
-}
 input[type="file"] {
     display: none;
 }
@@ -163,7 +161,7 @@ top: 393px;
 .aboutmelabel{
  width: 798px;
 height: 21px;
-font-family: 'Helvetica Neue';
+font-family: 'HelveticaNeue';
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -180,6 +178,12 @@ background: #FFFFFF;
 border: 1px solid #BCBCBC;
 border-radius: 4px;
 margin-left: 5px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 22px;
+text-transform: lowercase;
 }
 ::placeholder { 
     position: absolute;
@@ -295,4 +299,74 @@ display: flex;
 align-items: center;
 color: #2E2E2E;
 margin-left: 5px;
+}
+.label-error {
+    color: #E52F2F;
+}
+.label-success {
+    color: #98E37E;
+}
+.input-error {
+    border-color: #E52F2F;
+    }
+    
+.input-success {
+    border-color: #98E37E;
+    }
+    
+    .input-error:focus {
+        outline:0 !important;
+    }
+    
+    .input-success:focus {
+        outline:0 !important;
+    }
+.firstnameerroricon{
+    position: relative;
+    bottom: 37px;
+    left: 410px;
+    
+}
+.firstnamesuccessicon{
+    right: 28px;
+    top: 3px;
+    position: relative;
+}
+.emailerroricon{
+    left: 810px;
+    position: relative;
+    bottom: 37px;
+    
+}
+.emailsuccessicon{
+    left: 777px;
+    position: relative;
+    bottom: 35px;
+}
+.submitbutton{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 18px 60px;
+gap: 20px;
+border: 0px;
+position: absolute;
+width: 151px;
+height: 48px;
+right: 972px;
+bottom: 65px;
+background: #6B40E3;
+border-radius: 4px;
+}
+.submitbuttontext{
+width: 81px;
+height: 20px;
+font-family: 'HelveticaNeue';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+letter-spacing: 0.08em;
+color: #FFFFFF;
 }

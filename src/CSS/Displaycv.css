@@ -31,6 +31,7 @@ height: 246px;
 left: 501px;
 top: 48px;
 border-radius: 133px;
+border-color: transparent;
 }
 .email{
     position: absolute;
@@ -95,7 +96,3 @@ line-height: 22px;
 text-transform: lowercase;
 color: #000000;
 }
-errors {
-    font-size: 10px;
-    color: #ff6774;
-  }

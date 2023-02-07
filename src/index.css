@@ -14,6 +14,9 @@ code {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: local("HelveticaNeue"),
-   url("./fonts/HelveticaNeue.ttc") format("truetype");
+  src: url(./fonts/HelveticaNeue.ttc);
   }
+.HelveticaNeue{
+  font-family: "Helvetica Neue";
+}
+  

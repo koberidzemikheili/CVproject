@@ -15,10 +15,10 @@ const Displaycv = () => {
     <div>
       <div className='firstname'>{data?.firstname}</div>
       <div className='lastname'>{data?.lastname}</div>
-      <img src={data?.image} alt="Image" className='displayimage'/>
-      <div className='email'>{data.email.length > 0 && <img src={Vector} className='vectorimg'></img>}{data?.email}</div>
-      <div className='phone'>{data.phone.length > 0 && <img src={Vectorphone} className='vectorphoneimg'></img>}{data?.phone}</div>
-      {<div className='aboutme'>ჩემ შესახებ</div>}
+       <img src={data?.image} className='displayimage'/>
+      <div className='email'>{data?.email  && <img src={Vector} className='vectorimg' alt="emailicon"></img>}{data?.email}</div>
+      <div className='phone'>{data?.phone  && <img src={Vectorphone} className='vectorphoneimg' alt="phoneicon"></img>}{data?.phone}</div>
+      {data?.textarea && <div className='aboutme'>ჩემ შესახებ</div>}
       <div className='aboutmetext'>{data?.textarea}</div>
     </div>
   );
