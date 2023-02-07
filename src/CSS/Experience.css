@@ -57,7 +57,7 @@ border: 1px solid #1A1A1A;
 .labelfornameandlastname{
     width: 371px;
     height: 21px;
-    font-family: 'Helvetica Neue';
+    font-family: 'HelveticaNeue';
     font-style: normal;
     font-weight: 1000;
     font-size: 16px;
@@ -161,7 +161,7 @@ top: 393px;
 .aboutmelabel{
  width: 798px;
 height: 21px;
-font-family: 'Helvetica Neue';
+font-family: 'HelveticaNeue';
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -362,7 +362,7 @@ border-radius: 4px;
 .submitbuttontext{
 width: 81px;
 height: 20px;
-font-family: 'Helvetica Neue';
+font-family: 'HelveticaNeue';
 font-style: normal;
 font-weight: 600;
 font-size: 16px;

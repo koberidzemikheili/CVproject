@@ -3,6 +3,7 @@ import '../CSS/Personalinfo.css'
 import { UserContext } from '../UserContext';
 import React, { useContext, useEffect,useState } from "react";
 import Displaycv from '../Displaycv';
+import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import erroricon from '../images/erroricon.png';
 import successicon from '../images/successicon.png';
@@ -10,7 +11,7 @@ export default function Personalinfo () {
 
   const [Details, setDetails] = useContext(UserContext);
   const [Trigger, setTrigger] = useContext(UserContext);
-  const [data, setData] = useState(JSON.parse(localStorage.getItem("Details")));
+  const [datafromlocal, setData] = useState(JSON.parse(localStorage.getItem("Details")));
   const {
     register,
     handleSubmit,
@@ -21,18 +22,19 @@ export default function Personalinfo () {
     mode: "onChange" // "onChange"
   });
   const revalidatedData = watch();
-  //for displaying in input fields that can stay after refresh
-  useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("Details")));
-}, [Details]);
+  let navigate = useNavigate(); 
+ 
 
   useEffect(() => {
     if (typeof Details !== "string") {
       localStorage.setItem("Details", JSON.stringify(Details));
-      //retriggers render because we had 1 render delay with setup of Details and setDetails the definition of IF IT WORKS DONT TOUCH IT
-      setTrigger(Trigger+1);
+      
     }
-  }, [Details,Trigger,setTrigger]);
+  }, [Details]);
+   //for displaying in input fields that can stay after refresh
+    useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("Details")));
+}, [Details]);
   
     const handleImage = async (e) => {
       const file = e.target.files[0];
@@ -51,8 +53,13 @@ export default function Personalinfo () {
         setDetails({...JSON.parse(localStorage.getItem("Details")), [name]: value});
       }
     };
-    const onSubmit = (data) => {
-      console.log(data);
+    const routeChange = () =>{ 
+      let path = `/experience`; 
+      navigate(path);
+      
+    }
+    const onSubmit = () => {
+      routeChange();
     };
 
     return (
@@ -67,7 +74,7 @@ export default function Personalinfo () {
                     <label className='labelfornameandlastname'>სახელი</label>
                     <input 
                     className={`inputfornameandlastname ${errors.firstname ? "input-error": revalidatedData.firstname ? "input-success" : null}`}
-                    value={data?.firstname} placeholder='ანზორ' name="firstname"
+                    value={datafromlocal?.firstname} placeholder='ანზორ' name="firstname"
                     {...register("firstname", { required: true, pattern:/^[ა-ჰ]{3,}$/, onChange: handleChange})}/>
                     {errors.firstname ? <img src={erroricon} className='firstnameerroricon' alt={''}/> : revalidatedData.firstname ? <img src={successicon} className='firstnamesuccessicon' alt={''}/> : null}
                     <small className='smallname'>მინიმუმ 2 ასო, ქართული ასოები</small>
@@ -75,7 +82,7 @@ export default function Personalinfo () {
 
                     <div className='lastnamediv'>
                     <label className='labelfornameandlastname'>გვარი</label>
-                    <input className={`inputfornameandlastname ${errors.lastname ? "input-error": revalidatedData.lastname ? "input-success" : null}`} value={data?.lastname} placeholder='მუმლაძე' name="lastname" 
+                    <input className={`inputfornameandlastname ${errors.lastname ? "input-error": revalidatedData.lastname ? "input-success" : null}`} value={datafromlocal?.lastname} placeholder='მუმლაძე' name="lastname" 
                      {...register("lastname", { required: true,pattern:/^[ა-ჰ]{3,}$/,onChange: (e) => handleChange(e)})}></input>
                      {errors.lastname ? <img src={erroricon} className='firstnameerroricon' alt={''} /> : revalidatedData.lastname ? <img src={successicon} className='firstnamesuccessicon' alt={''} /> : null}
                     <small className='smallname'>მინიმუმ 2 ასო, ქართული ასოები</small>
@@ -88,12 +95,12 @@ export default function Personalinfo () {
                         </label>
                     <div className='aboutmediv'>
                     <label className='aboutmelabel input-success'>ჩემ შესახებ (არასავალდებულო)</label>
-                    <textarea className='aboutmetextarea' placeholder='ზოგადი ინფო შენ შესახებ' name='textarea' value={data?.textarea} onChange={handleChange}></textarea>
+                    <textarea className='aboutmetextarea' placeholder='ზოგადი ინფო შენ შესახებ' name='textarea' value={datafromlocal?.textarea} onChange={handleChange}></textarea>
                     </div>
 
                     <div className='emaildiv'>
                     <label className='emaillabel'>ელ. ფოსტა</label>
-                    <input type="email" name="email" value={data?.email} className={`emailinput ${errors.email ? "input-error": revalidatedData.email ? "input-success" : null}`} placeholder='example@redberry.ge'
+                    <input type="email" name="email" value={datafromlocal?.email} className={`emailinput ${errors.email ? "input-error": revalidatedData.email ? "input-success" : null}`} placeholder='example@redberry.ge'
                     {...register("email", { required: true,pattern: /^[\w.-]+@redberry\.ge$/,onChange: (e) => handleChange(e)})}
                     ></input>
                     {errors.email ? <img src={erroricon} className='emailerroricon' alt={''} /> : revalidatedData.email ? <img src={successicon} className='emailsuccessicon'  alt={''}/> : null}
@@ -102,7 +109,7 @@ export default function Personalinfo () {
 
                     <div className='phonediv'>
                     <label className='phonelabel'>მობილურის ნომერი</label>
-                    <input type="text" name="phone" value={data?.phone} className={`phoneinput ${errors.phone ? "input-error": revalidatedData.phone ? "input-success" : null}`} placeholder='+995 555 555 555'
+                    <input type="text" name="phone" value={datafromlocal?.phone} className={`phoneinput ${errors.phone ? "input-error": revalidatedData.phone ? "input-success" : null}`} placeholder='+995 555 555 555'
                     {...register("phone", { required: true,pattern: /^(\+\d{3})\s(\d{3})\s(\d{2})\s(\d{2})\s(\d{2})$/,onChange: (e) => handleChange(e)})}
                     ></input>
                     {errors.phone ? <img src={erroricon} className='emailerroricon' alt={''} /> : revalidatedData.phone ? <img src={successicon} className='emailsuccessicon' alt={''} /> : null}
