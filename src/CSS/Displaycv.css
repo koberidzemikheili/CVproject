@@ -104,3 +104,83 @@ left: 78px;
 top: 994px;
 
 }
+.position{
+    
+width: 143px;
+height: 22px;
+left: 80px;
+top: 365px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+color: #F93B1D;
+}
+.positiontext{
+   
+width: 178px;
+height: 20px;
+left: 80px;
+top: 402px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+color: #1A1A1A;
+}
+.employertext{
+    
+width: 70px;
+height: 20px;
+left: 265px;
+top: 402px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+color: #1A1A1A;
+}
+.dates{
+  
+width: 183px;
+height: 19px;
+left: 80px;
+top: 429px;
+font-family: 'Helvetica Neue';
+font-style: italic;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+color: #919191;
+}
+.experiencehr {
+
+width: 662px;
+height: 0px;
+right: 80px;
+top: 341px;
+border: 1px solid #C8C8C8;
+}
+.descriptiontext{
+
+width: 662px;
+height: 66px;
+left: 80px;
+top: 464px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 22px;
+text-transform: capitalize;
+color: #000000;
+}
+.experiencemaindiv{
+    width: 664px;
+    height: 300px;
+    margin-top: 36vh;
+    margin-left: 79px;
+}

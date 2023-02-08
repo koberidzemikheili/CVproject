@@ -13,7 +13,7 @@ export default function Experience () {
     const [formFields, setFormFields] = useState(
         datafromlocal && datafromlocal.experiences
           ? datafromlocal.experiences
-          : [{ name: '', lastname: '' }]
+          : [{ position: '', employer: '',start_date: '',due_date:'',description:''}]
       );
     
       //handleformchange takes event and index from input that is mapped and saves data in setFormFields. in the end calls handlechange
@@ -50,21 +50,15 @@ export default function Experience () {
     
       const addFields = () => {
         let object = {
-          name: '',
-          lastname: ''
+          position: '',
+          employer: '',
+          start_date: '',
+          due_date:'',
+          description: '',
         }
     
         setFormFields([...formFields, object])
       }
-    
-      const removeFields = (index) => {
-        let data = [...formFields];
-        data.splice(index, 1)
-        setFormFields(data)
-      }
-     
-      
-      
     
       return (
         <div className="main">
@@ -77,27 +71,44 @@ export default function Experience () {
               return (
                 <div key={index}>
                   <input
-                    name='name'
-                    placeholder='Name'
-                    value={formFields[index].name}
+                    name='position'
+                    type='text'
+                    placeholder='თანამდებობა'
+                    value={formFields[index].position}
                     onChange={event => handleFormChange(event, index)}
-                    
                   />
+                   
                   <input
-                    name='lastname'
-                    placeholder='lastname'
+                    name='employer'
+                    type='text'
+                    placeholder='დამსაქმებელი'
                     onChange={event => handleFormChange(event, index)}
-                    value={formFields[index].lastname}
+                    value={formFields[index].employer}
                   />
-                  <button onClick={() => removeFields(index)}>Remove</button>
+                  <input type="date" name="start_date"
+                  placeholder='mm/dd/yy'
+                  onChange={event => handleFormChange(event, index)}
+                  value={formFields[index].start_date}
+                  ></input>
+                  <input type="date" name="due_date"
+                  placeholder='mm/dd/yy'
+                  onChange={event => handleFormChange(event, index)}
+                  value={formFields[index].due_date}
+                  ></input>
+
+                    <input
+                    name='description'
+                    type='textarea'
+                    placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'
+                    value={formFields[index].description}
+                    onChange={event => handleFormChange(event, index)}
+                  />
                 </div>
               )
             })}
           </form>
           <button onClick={addFields}>Add More..</button>
           <br />
-            <div>{experiencesfromlocal?.name}</div>
-            <div>{experiencesfromlocal?.lastname}</div>
           <button >Submit</button>
         </div>
         <div className='rightside'>

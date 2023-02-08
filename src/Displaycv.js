@@ -6,8 +6,7 @@ import Vectorphone from './images/Vectorphone.png';
 import logothird from './images/LOGO3.png';
 const Displaycv = () => {
   const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("Details")));
-  const [Details, setDetails] = useContext(UserContext);
-  const [experiencesfromlocal,setExperiencesfromlocal] = useState();
+  const [experiencesArray, setExperiencesArray] = useState([]);
 
   useEffect(() => {
       setDatafromlocal(JSON.parse(localStorage.getItem("Details")));
@@ -16,15 +15,15 @@ const Displaycv = () => {
   
   useEffect(() => {
     if (datafromlocal && datafromlocal.experiences) {
+      let experiencesArray = [];
       datafromlocal.experiences.map((item, index) => {
-        setExperiencesfromlocal(item);
-        console.log(Details)
+        experiencesArray.push(item);
       });
+      setExperiencesArray(experiencesArray);
     }
   }, [datafromlocal]);
-
   return (
-    <div>
+    <div className='gela'>
       <div className='firstname'>{datafromlocal?.firstname}</div>
       <div className='lastname'>{datafromlocal?.lastname}</div>
        <img src={datafromlocal?.image} className='displayimage'/>
@@ -32,7 +31,20 @@ const Displaycv = () => {
       <div className='phone'>{datafromlocal?.phone  && <img src={Vectorphone} className='vectorphoneimg' alt="phoneicon"></img>}{datafromlocal?.phone}</div>
       {datafromlocal?.textarea && <div className='aboutme'>ჩემ შესახებ</div>}
       <div className='aboutmetext'>{datafromlocal?.textarea}</div>
-      <div>{experiencesfromlocal?.name}</div>
+      <div className='experiencemaindiv'>
+      {experiencesArray.map((experience, index) => (
+        <div key={index}>
+          
+          {experience && <hr className='experiencehr'/>}
+          {experience?.position && <div className='position'>გამოცდილება</div>}
+          <div className='positiontext'>{`${experience?.position},`}</div>
+          <div className='employertext'>{experience?.employer}</div>
+          <div className='dates'>{experience.start_date} {experience.due_date}</div>
+          <div className='descriptiontext'>{experience?.description}</div>
+          </div>
+          
+      ))}
+    </div>
       <img src={logothird} alt='redberylogo' className='logothird'></img>
     </div>
   );
