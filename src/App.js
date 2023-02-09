@@ -5,10 +5,12 @@ import Personalinfo from './Pages/Personalinfo';
 import Experience from './Pages/Experience';
 import {UserProvider} from './UserContext';
 import Education from './Pages/Education';
+import { FetchedDegreeProvider } from './FetchedDegreeContext';
 
 function App() {
   return (
     <>
+    <FetchedDegreeProvider>
     <UserProvider>
     <Routes>
       <Route path="/"exact element={(<Welcome />)}/>
@@ -17,6 +19,7 @@ function App() {
       <Route path="/education" element={<Education/>}/>
     </Routes>
     </UserProvider>
+    </FetchedDegreeProvider>
     </>
   );
 }

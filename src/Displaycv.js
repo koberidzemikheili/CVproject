@@ -1,11 +1,14 @@
 import './CSS/Displaycv.css';
-import React, { useState,useEffect } from "react";
+import React, { useContext,useState,useEffect,useMemo} from "react";
 import Vector from './images/Vector.png';
 import Vectorphone from './images/Vectorphone.png';
 import logothird from './images/LOGO3.png';
+import { FetchedDegreeContext } from './FetchedDegreeContext';
 const Displaycv = () => {
   const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("Details")));
   const [experiencesArray, setExperiencesArray] = useState([]);
+  const [educationsArray, seteducationsArray] = useState([]);
+  const [fetcheddegree,setFetcheddegree] = useContext(FetchedDegreeContext);
 
   useEffect(() => {
       setDatafromlocal(JSON.parse(localStorage.getItem("Details")));
@@ -20,7 +23,25 @@ const Displaycv = () => {
       });
       setExperiencesArray(experiencesArray);
     }
+    if (datafromlocal && datafromlocal.educations) {
+      let educationsArray = [];
+      datafromlocal.educations.map((item, index) => {
+        educationsArray.push(item);
+      });
+      seteducationsArray(educationsArray);
+    }
   }, [datafromlocal]);
+  
+  let founddegree;
+  const finddegree = (degree) => {
+    fetcheddegree?.map(({ title, id }) => {
+      if (degree == id) {
+       founddegree = title;
+      }
+    });
+  
+  };
+  
   return (
     <div className='displaycvdiv'>
       <div className='personalinfomaindiv'>
@@ -48,9 +69,21 @@ const Displaycv = () => {
           
       ))}
     </div>
+   
+    {educationsArray.map((education, index) => (
+        <div key={index}>
+          
+          {finddegree(education?.degree)}
+          {education && <hr className='experiencehr'/>}
+          {education?.institute && <div className='position'>გამოცდილება</div>}
+          <div className='positiontext'>{education?.institute}{`, ${founddegree}`}</div>
+          <div className='dates'>{education.due_date}</div>
+          <div className='descriptiontext'>{education?.description}</div>
+          </div> ))}
       <img src={logothird} alt='redberylogo' className='logothird'></img>
     </div>
   );
 };
+
 
 export default Displaycv;
