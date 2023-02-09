@@ -75,8 +75,8 @@ export default function Personalinfo () {
                     <input 
                     className={`inputfornameandlastname ${errors.firstname ? "input-error": revalidatedData.firstname ? "input-success" : null}`}
                     value={datafromlocal?.firstname} placeholder='ანზორ' name="firstname"
-                    {...register("firstname", { required: true, pattern:/^[ა-ჰ]{3,}$/, onChange: handleChange})}/>
-                    {errors.firstname ? <img src={erroricon} className='firstnameerroricon' alt={''}/> : revalidatedData.firstname ? <img src={successicon} className='firstnamesuccessicon' alt={''}/> : null}
+                    {...register("firstname", { required: true, pattern:/^[ა-ჰ]{3,}$/, onChange:(e)=> handleChange(e)})}/>
+                    {errors.firstname ? (<img src={erroricon} className='firstnameerroricon' alt={''}/>) : revalidatedData.firstname ? <img src={successicon} className='firstnamesuccessicon' alt={''}/> : null}
                     <small className='smallname'>მინიმუმ 2 ასო, ქართული ასოები</small>
                     </div>
 
@@ -116,7 +116,7 @@ export default function Personalinfo () {
                     <small className='smallphone'>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</small>
                     </div>
             
-                    <button type='submit' className='submitbutton'><div className='submitbuttontext'>შემდეგი</div></button>
+                    <button type='submit' className='submitbutton1'><div className='submitbuttontext1'>შემდეგი</div></button>
                     
                 </form>
             </div>

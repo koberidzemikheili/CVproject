@@ -4,6 +4,7 @@ import Welcome from './Pages/Welcome';
 import Personalinfo from './Pages/Personalinfo';
 import Experience from './Pages/Experience';
 import {UserProvider} from './UserContext';
+import Education from './Pages/Education';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/"exact element={(<Welcome />)}/>
       <Route path="/personalinfo" element={<Personalinfo/>}/>
       <Route path="/experience" element={<Experience/>}/>
+      <Route path="/education" element={<Education/>}/>
     </Routes>
     </UserProvider>
     </>

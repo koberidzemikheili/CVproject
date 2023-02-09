@@ -54,252 +54,8 @@ left: 150px;
 top: 88px;
 border: 1px solid #1A1A1A;
 }
-.labelfornameandlastname{
-    width: 371px;
-    height: 21px;
-    font-family: 'HelveticaNeue';
-    font-style: normal;
-    font-weight: 1000;
-    font-size: 16px;
-    color: #000000;
-    margin-left: 24px;
-}
-.inputfornameandlastname{
-    width: 371px;
-    height: 48px;
-    margin-left: 24px;
-    
-    background: #FFFFFF;
-    border: 1px solid #BCBCBC;
-    border-radius: 4px;
-    font-family: 'Helvetica Neue';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    
-}
-.namediv{
-    width: 419px;
-    height: 122px;
-    top: 157px;
-    position: absolute;
-    left: 126px;
-}
-.smallname{
-width: 371px;
-height: 21px;
-margin-left: 24px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 300;
-font-size: 14px;
-line-height: 21px;
-color: #2E2E2E;
-}
-.lastnamediv{
-    width: 419px;
-    height: 122px;
-    top: 157px;
-    position: absolute;
-    left: 552px;
 
-}
 
-input[type="file"] {
-    display: none;
-}
-.custom-file-upload {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 10px 12px;
-    gap: 10px;
-    position: absolute;
-    width: 107px;
-    height: 27px;
-    left: 401px;
-    top: 315px;
-    background: #0E80BF;
-    border-radius: 4px;
-    font-family: 'Helvetica Neue';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #FFFFFF;
-
-}
-.photolabel{
-    position: absolute;
-width: 232px;
-height: 22px;
-left: 150px;
-top: 325px;
-
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 22px;
-color: #1A1A1A;
-}
-.aboutmediv{
-    display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 8px 24px;
-gap: 8px;
-
-position: absolute;
-width: 846px;
-height: 148px;
-left: calc(50% - 846px/2 - 411px);
-top: 393px;
-}
-.aboutmelabel{
- width: 798px;
-height: 21px;
-font-family: 'HelveticaNeue';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 21px;
-display: flex;
-align-items: center;
-color: #000000;
-margin-left: 5px;
-}
-.aboutmetextarea{
-    width: 798px;
-height: 103px;
-background: #FFFFFF;
-border: 1px solid #BCBCBC;
-border-radius: 4px;
-margin-left: 5px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 22px;
-text-transform: lowercase;
-}
-::placeholder { 
-    position: absolute;
-height: 21px;
-left: 16px;
-right: 16px;
-top: 13px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 21px;
-display: flex;
-align-items: center;
-color: rgba(0, 0, 0, 0.6);
-  }
-
-.emaildiv{
-    display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 8px 24px;
-gap: 8px;
-
-position: absolute;
-width: 846px;
-height: 122px;
-left: calc(50% - 846px/2 - 411px);
-top: 558px;
-
-}
-.emailinput{
-box-sizing: border-box;
-width: 798px;
-height: 48px;
-background: #FFFFFF;
-border: 1px solid #BCBCBC;
-border-radius: 4px;
-margin-left: 5px;
-}
-.emaillabel{
-    width: 798px;
-height: 21px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 21px;
-display: flex;
-align-items: center;
-color: #000000;
-margin-left: 5px;
-}
-.smallemail{
-    width: 798px;
-height: 21px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 300;
-font-size: 14px;
-line-height: 21px;
-display: flex;
-align-items: center;
-color: #2E2E2E;
-margin-left: 5px;
-}
-
-.phonediv{
-    display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 8px 24px;
-gap: 8px;
-
-position: absolute;
-width: 846px;
-height: 122px;
-left: calc(50% - 846px/2 - 411px);
-top: 693px;
-
-}
-.phoneinput{
-box-sizing: border-box;
-width: 798px;
-height: 48px;
-background: #FFFFFF;
-border: 1px solid #BCBCBC;
-border-radius: 4px;
-margin-left: 5px;
-}
-.phonelabel{
-    width: 798px;
-height: 21px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 21px;
-display: flex;
-align-items: center;
-color: #000000;
-margin-left: 5px;
-}
-.smallphone{
-    width: 798px;
-height: 21px;
-font-family: 'Helvetica Neue';
-font-style: normal;
-font-weight: 300;
-font-size: 14px;
-line-height: 21px;
-display: flex;
-align-items: center;
-color: #2E2E2E;
-margin-left: 5px;
-}
 .label-error {
     color: #E52F2F;
 }
@@ -307,11 +63,11 @@ margin-left: 5px;
     color: #98E37E;
 }
 .input-error {
-    border-color: #E52F2F;
+    border-color: #E52F2F!important;
     }
     
 .input-success {
-    border-color: #98E37E;
+    border-color: #98E37E!important;
     }
     
     .input-error:focus {
@@ -343,19 +99,170 @@ margin-left: 5px;
     position: relative;
     bottom: 35px;
 }
-.submitbutton{
+
+.positioninputdiv{
     display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px;
+gap: 8px;
+width: 846px;
+height: 125px;
+}
+.positionlabel{
+width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #000000;
+}
+.positioninput{
+box-sizing: border-box;
+width: 798px;
+height: 48px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+}
+.positionsmall{
+width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #2E2E2E;
+}
+.maindivforexperienceinputs{
+    width: 800px;
+    margin-left: 127px;
+}
+.heightsetterforform{
+    margin-top: 157px;
+}
+.datesdiv{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px;
+gap: 8px;
+width: 419px;
+height: 125px;
+}
+.datesinrow{
+    display: flex;
+}
+.dateslabel{
+width: 371px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: #000000;
+}
+.datesstyle{
+box-sizing: border-box;
+width: 371px;
+height: 48px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+align-items: center;
+color: rgba(0, 0, 0, 0.6);
+}
+.descriptiondiv{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px;
+gap: 8px;
+width: 846px;
+height: 168px;
+}
+.labeldescription{
+width: 798px;
+height: 21px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 21px;
+display: flex;
+color: #000000;
+}
+.descriptionstyle{
+width: 798px;
+height: 123px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+color: rgba(0, 0, 0, 0.6);
+}
+.lasthr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 22px;
+    width: 798px;
+    height: 0px;
+    border: 1px solid #C1C1C1;
+}
+.addfieldsbutton{
+margin-left: 151px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 18px 60px;
+gap: 20px;
+width: 289px;
+height: 48px;
+background: #62A1EB;
+border-radius: 4px;
+border-color: transparent;
+
+}
+.addfieldsbuttontext{
+width: 247px;
+height: 20px;
+font-family: 'Helvetica Neue';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+color: #FFFFFF;
+}
+.submitbutton{
+display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 18px 60px;
 gap: 20px;
 border: 0px;
-position: absolute;
 width: 151px;
 height: 48px;
-right: 972px;
-bottom: 65px;
 background: #6B40E3;
 border-radius: 4px;
 }
@@ -369,4 +276,38 @@ font-size: 16px;
 line-height: 20px;
 letter-spacing: 0.08em;
 color: #FFFFFF;
+}
+.backbutton{
+    margin-left: 100px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 18px 60px;
+gap: 20px;
+border: 0px;
+width: 113px;
+height: 48px;
+background: #6B40E3;
+border-radius: 4px;
+margin-right: 537px;
+}
+.submitandbackbuttons{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 806px;
+    margin-left: 151px;
+    margin-top: 68px;
+}
+
+.positionerroricon{
+    left: 810px;
+    position: relative;
+    bottom: 37px;
+    
+}
+.positionsuccessicon{
+    left: 773px;
+    position: relative;
+    bottom: 38px;
 }

@@ -1,6 +1,5 @@
 import './CSS/Displaycv.css';
-import { UserContext } from './UserContext';
-import React, { useContext, useState,useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import Vector from './images/Vector.png';
 import Vectorphone from './images/Vectorphone.png';
 import logothird from './images/LOGO3.png';
@@ -23,22 +22,26 @@ const Displaycv = () => {
     }
   }, [datafromlocal]);
   return (
-    <div className='gela'>
+    <div className='displaycvdiv'>
+      <div className='personalinfomaindiv'>
+        <div>
       <div className='firstname'>{datafromlocal?.firstname}</div>
       <div className='lastname'>{datafromlocal?.lastname}</div>
+      </div>
        <img src={datafromlocal?.image} className='displayimage'/>
       <div className='email'>{datafromlocal?.email  && <img src={Vector} className='vectorimg' alt="emailicon"></img>}{datafromlocal?.email}</div>
       <div className='phone'>{datafromlocal?.phone  && <img src={Vectorphone} className='vectorphoneimg' alt="phoneicon"></img>}{datafromlocal?.phone}</div>
       {datafromlocal?.textarea && <div className='aboutme'>ჩემ შესახებ</div>}
       <div className='aboutmetext'>{datafromlocal?.textarea}</div>
+      </div>
+
       <div className='experiencemaindiv'>
       {experiencesArray.map((experience, index) => (
         <div key={index}>
           
           {experience && <hr className='experiencehr'/>}
           {experience?.position && <div className='position'>გამოცდილება</div>}
-          <div className='positiontext'>{`${experience?.position},`}</div>
-          <div className='employertext'>{experience?.employer}</div>
+          <div className='positiontext'>{experience?.position}{`, ${experience?.employer}`}</div>
           <div className='dates'>{experience.start_date} {experience.due_date}</div>
           <div className='descriptiontext'>{experience?.description}</div>
           </div>

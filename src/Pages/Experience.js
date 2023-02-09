@@ -1,25 +1,35 @@
 import '../CSS/Experience.css'
 import React, { useContext, useEffect,useState } from "react";
 import { UserContext } from '../UserContext';
+import { useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
+import erroricon from '../images/erroricon.png';
+import successicon from '../images/successicon.png';
 import Displaycv from '../Displaycv';
-import { set } from 'react-hook-form';
 export default function Experience () {
 
     const [Details, setDetails] = useContext(UserContext);
-    const [Trigger, setTrigger] = useContext(UserContext);
     const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("Details")));
-    //Experiences array from local storage i am using this state for displaying values and cvdisplay
-    const [experiencesfromlocal,setExperiencesfromlocal] = useState();
     const [formFields, setFormFields] = useState(
         datafromlocal && datafromlocal.experiences
           ? datafromlocal.experiences
-          : [{ position: '', employer: '',start_date: '',due_date:'',description:''}]
+          : [{position: '', employer: '',start_date: '',due_date:'',description:''}]
       );
-    
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      
+      } = useForm({
+        mode: "onChange" // "onChange"
+      });
+      const revalidatedData = watch();
+      let navigate = useNavigate(); 
       //handleformchange takes event and index from input that is mapped and saves data in setFormFields. in the end calls handlechange
-      const handleFormChange = (event, index) => {
+      const handleFormChange = (event, index,name) => {
         let data = [...formFields];
-        data[index][event.target.name] = event.target.value;
+        data[index][name] = event.target.value;
         setFormFields(data);
         handleChange();
       }
@@ -39,14 +49,6 @@ export default function Experience () {
     }, [Details]);
 
    
-    useEffect(() => {
-        if (datafromlocal && datafromlocal.experiences) {
-          datafromlocal.experiences.map((item, index) => {
-            setExperiencesfromlocal(item);
-          });
-        }
-      }, [datafromlocal]);
-      
     
       const addFields = () => {
         let object = {
@@ -59,57 +61,132 @@ export default function Experience () {
     
         setFormFields([...formFields, object])
       }
-    
+      const removeFields = (index) => {
+        let data = [...formFields];
+        data.splice(index, 1)
+        setFormFields(data)
+      }
+      const routeChange = () =>{ 
+        let path = `/education`; 
+        navigate(path);
+        
+      }
+      const routeBack = () => {
+        let path = '/personalinfo';
+        navigate(path);
+      }
+   
+      const onSubmit = () => {
+        routeChange();
+      };
+      const onBack = () => {
+        routeBack();
+      };
+      //sorry for this spagetti but time was running out and i used first solution that came to my head to remove empty fields which have index more than 0
+      const checkforempty =(index)=>{
+        if(errors && errors.experiences && errors.experiences[index] && errors.experiences[index].position && errors.experiences[index].position.type
+          && errors.experiences[index].employer && errors.experiences[index].employer.type  
+          && errors.experiences[index].position.type==='required' && errors.experiences[index].employer.type==='required'
+          && errors.experiences[index].start_date && errors.experiences[index].start_date.type
+          && errors.experiences[index].due_date && errors.experiences[index].due_date.type  
+          && errors.experiences[index].start_date.type==='required' && errors.experiences[index].due_date.type==='required'
+          && errors.experiences[index].description && errors.experiences[index].description.type && errors.experiences[index].description.type==='required'){
+          removeFields(index) 
+        }
+      }
+      
+      
+
       return (
         <div className="main">
             <div className='leftside'>
-                <div className='headline'>პირადი ინფო</div>
-                <div className='pagenumber'>1/3</div>
+                <div className='headline'>გამოცდილება</div>
+                <div className='pagenumber'>2/3</div>
                 <hr className='firsthr'/>
-          <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
+            <div  className='heightsetterforform'>
+           
             {formFields.map((form, index) => {
               return (
-                <div key={index}>
+                <div key={form.id} className='maindivforexperienceinputs'>
+                  <div className='positioninputdiv'>
+                    <label className='positionlabel'>თანამდებობა</label>
                   <input
-                    name='position'
                     type='text'
                     placeholder='თანამდებობა'
-                    value={formFields[index].position}
-                    onChange={event => handleFormChange(event, index)}
-                  />
-                   
+                    value={formFields[index] && formFields[index].position ? formFields[index].position : ""}
+                    className={`positioninput ${errors.experiences && errors.experiences[index] 
+                    && errors.experiences[index].position ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
+                     && revalidatedData.experiences[index].position ? "input-success" : null}`}
+                    {...register(`experiences[${index}].position`, { required: true, pattern:/^.{3,}$/, onChange:(event)=> handleFormChange(event, index,'position')})}/>
+                    {errors.experiences && errors.experiences[index] && errors.experiences[index].position ? <img src={erroricon} className='positionerroricon' alt={''}/> : revalidatedData.experiences && revalidatedData.experiences[index] && revalidatedData.experiences[index].position ? <img src={successicon} className='positionsuccessicon' alt={''}/> : null}
+                    
+                    {index!==0 &&checkforempty(index)}
+                    
+
+                  <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
+                   </div>
+
+                   <div className='positioninputdiv'>
+                    <label className='positionlabel'>დამსაქმებელი</label>
                   <input
-                    name='employer'
+                    
                     type='text'
                     placeholder='დამსაქმებელი'
-                    onChange={event => handleFormChange(event, index)}
-                    value={formFields[index].employer}
-                  />
+                    value={formFields[index] && formFields[index].employer ? formFields[index].employer : ""}
+                    className={`positioninput ${errors.experiences && errors.experiences[index] 
+                      && errors.experiences[index].employer ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
+                       && revalidatedData.experiences[index].employer ? "input-success" : null}`}
+                       {...register(`experiences[${index}].employer`, { required: true, pattern:/^.{3,}$/, onChange:(event)=> handleFormChange(event, index,'employer')})}/>
+                    {errors.experiences && errors.experiences[index] && errors.experiences[index].employer ? <img src={erroricon} className='positionerroricon' alt={''}/> : revalidatedData.experiences && revalidatedData.experiences[index] && revalidatedData.experiences[index].employer ? <img src={successicon} className='positionsuccessicon' alt={''}/> : null}
+                  <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
+                  </div>
+
+                  <div className='datesinrow'>
+                  <div className='datesdiv'>
+                  <label className='dateslabel'>დაწყების რიცხვი</label>
                   <input type="date" name="start_date"
                   placeholder='mm/dd/yy'
-                  onChange={event => handleFormChange(event, index)}
-                  value={formFields[index].start_date}
-                  ></input>
+                  value={formFields[index] && formFields[index].start_date ? formFields[index].start_date : ""}
+                  className={`datesstyle ${errors.experiences && errors.experiences[index] 
+                    && errors.experiences[index].start_date ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
+                     && revalidatedData.experiences[index].start_date ? "input-success" : null}`}
+                  {...register(`experiences[${index}].start_date`, { required: true, onChange:(event)=> handleFormChange(event, index,'start_date')})}/>
+                  </div>
+
+                  <div className='datesdiv'>
+                  <label className='dateslabel'>დამთავრების რიცხვი</label>
                   <input type="date" name="due_date"
                   placeholder='mm/dd/yy'
-                  onChange={event => handleFormChange(event, index)}
-                  value={formFields[index].due_date}
-                  ></input>
+                  value={formFields[index] && formFields[index].due_date ? formFields[index].due_date : ""}
+                  className={`datesstyle ${errors.experiences && errors.experiences[index] 
+                    && errors.experiences[index].due_date ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
+                     && revalidatedData.experiences[index].due_date ? "input-success" : null}`}
+                  {...register(`experiences[${index}].due_date`, { required: true, onChange:(event)=> handleFormChange(event, index,'due_date')})}/>
+                  </div>
+                  </div>
 
-                    <input
-                    name='description'
-                    type='textarea'
+                    <div className='descriptiondiv'>
+                      <label className='labeldescription'>აღწერა</label>
+                    <textarea
                     placeholder='როლი თანამდებობაზე და ზოგადი აღწერა'
-                    value={formFields[index].description}
-                    onChange={event => handleFormChange(event, index)}
-                  />
+                    value={formFields[index] && formFields[index].description ? formFields[index].description : ""}
+                    className={`descriptionstyle ${errors.experiences && errors.experiences[index] 
+                      && errors.experiences[index].description ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
+                       && revalidatedData.experiences[index].description ? "input-success" : null}`}
+                    {...register(`experiences[${index}].description`, { required: true, onChange:(event)=> handleFormChange(event, index,'description')})}/>
+                  </div>
+                  {formFields.length > 1 && <hr className='lasthr'/>}
                 </div>
-              )
-            })}
+              )})
+            }
+            <button  className='addfieldsbutton' type='button' onClick={addFields}><div className='addfieldsbuttontext'>მეტი გამოცდილების დამატება</div></button>
+            <div className='submitandbackbuttons'>
+          <button type='submit' className='submitbutton'><div className='submitbuttontext'>შემდეგი</div></button>
+          <button type='button' className='backbutton' onClick={onBack}><div className='submitbuttontext'>უკან</div></button>
+          </div>
+            </div>
           </form>
-          <button onClick={addFields}>Add More..</button>
-          <br />
-          <button >Submit</button>
         </div>
         <div className='rightside'>
                 <Displaycv/>
