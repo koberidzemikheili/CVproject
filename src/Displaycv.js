@@ -45,45 +45,49 @@ const Displaycv = () => {
   return (
     <div className='displaycvdiv'>
       <div className='personalinfomaindiv'>
-        <div>
-      <div className='firstname'>{datafromlocal?.firstname}</div>
-      <div className='lastname'>{datafromlocal?.lastname}</div>
+        <div className='subpersonalinformationdiv'>
+          <div className='firstnamelastnamediv'>
+      <div className='firstname'>{datafromlocal?.name}</div>
+      <div className='lastname'>{datafromlocal?.surname}</div>
       </div>
-       <img src={datafromlocal?.image} className='displayimage'/>
+      
       <div className='email'>{datafromlocal?.email  && <img src={Vector} className='vectorimg' alt="emailicon"></img>}{datafromlocal?.email}</div>
-      <div className='phone'>{datafromlocal?.phone  && <img src={Vectorphone} className='vectorphoneimg' alt="phoneicon"></img>}{datafromlocal?.phone}</div>
-      {datafromlocal?.textarea && <div className='aboutme'>ჩემ შესახებ</div>}
-      <div className='aboutmetext'>{datafromlocal?.textarea}</div>
+      <div className='phone'>{datafromlocal?.phone_number  && <img src={Vectorphone} className='vectorphoneimg' alt="phoneicon"></img>}{datafromlocal?.phone_number}</div>
+      {datafromlocal?.about_me && <div className='aboutme'>ჩემ შესახებ</div>}
+      <div className='aboutmetext'>{datafromlocal?.about_me}</div>
       </div>
-
+      <img src={datafromlocal?.image} className='displayimage'/>
+      </div>
       <div className='experiencemaindiv'>
       {experiencesArray.map((experience, index) => (
         <div key={index}>
           
           {experience && <hr className='experiencehr'/>}
           {experience?.position && <div className='position'>გამოცდილება</div>}
-          <div className='positiontext'>{experience?.position}{`, ${experience?.employer}`}</div>
+          <div className='positiontext'>{experience?.position}{experience?.employer}</div>
           <div className='dates'>{experience.start_date} {experience.due_date}</div>
           <div className='descriptiontext'>{experience?.description}</div>
           </div>
           
       ))}
     </div>
-   
+        <div className='experiencemaindiv'>
     {educationsArray.map((education, index) => (
         <div key={index}>
           
           {finddegree(education?.degree)}
-          {education && <hr className='experiencehr'/>}
-          {education?.institute && <div className='position'>გამოცდილება</div>}
-          <div className='positiontext'>{education?.institute}{`, ${founddegree}`}</div>
+          {education  && <hr className='experiencehr'/>}
+          {education  && <div className='position'>განათლება</div>}
+          <div className='positiontext'>{education?.institute}{founddegree && founddegree}</div>
           <div className='dates'>{education.due_date}</div>
           <div className='descriptiontext'>{education?.description}</div>
           </div> ))}
       <img src={logothird} alt='redberylogo' className='logothird'></img>
     </div>
+    </div>
   );
 };
+
 
 
 export default Displaycv;
