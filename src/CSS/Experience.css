@@ -303,11 +303,35 @@ margin-right: 537px;
 .positionerroricon{
     left: 810px;
     position: relative;
-    bottom: 37px;
+    bottom: 65px;
     
 }
 .positionsuccessicon{
     left: 773px;
     position: relative;
-    bottom: 38px;
+    bottom:  66px;
+}
+.selectdiv{
+width: 419px;
+height: 125px;
+
+margin-top: 15px;
+}
+.selectstyle{
+box-sizing: border-box;
+width: 371px;
+height: 48px;
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+border-radius: 4px;
+}
+.selectanddatediv{
+display: flex;
+flex-direction: row;
+margin-left: 24px;
+}
+.edudate{
+    width: 419px;
+    height: 125px;
+    margin-top: 15px;
 }

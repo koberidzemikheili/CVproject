@@ -8,6 +8,7 @@ import erroricon from '../images/erroricon.png';
 import successicon from '../images/successicon.png';
 import Displaycv from '../Displaycv';
 import axios from 'axios';
+import ResetButton from '../ResetButton';
 export default function Education () {
     
     const [Details, setDetails] = useContext(UserContext);
@@ -157,6 +158,7 @@ export default function Education () {
                 <div className='headline'>განათლება</div>
                 <div className='pagenumber'>3/3</div>
                 <hr className='firsthr'/>
+                <ResetButton />
                 <form onSubmit={handleSubmit(onSubmit)}>
             <div  className='heightsetterforform'>
            
@@ -173,19 +175,19 @@ export default function Education () {
                     && errors.educations[index].institute ? "input-error" : revalidatedData.educations && revalidatedData.educations[index]
                      && revalidatedData.educations[index].institute ? "input-success" : null}`}
                     {...register(`educations[${index}].institute`, { required: true, pattern:/^.{3,}$/, onChange:(event)=> handleFormChange(event, index,'institute')})}/>
-                    {errors.educations && errors.educations[index] && errors.educations[index].institute ? <img src={erroricon} className='positionerroricon' alt={''}/> : revalidatedData.educations && revalidatedData.educations[index] && revalidatedData.educations[index].position ? <img src={successicon} className='positionsuccessicon' alt={''}/> : null}
+                    <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
+                    {errors.educations && errors.educations[index] && errors.educations[index].institute ? <img src={erroricon} className='positionerroricon' alt={''}/> : revalidatedData.educations && revalidatedData.educations[index] && revalidatedData.educations[index].institute ? <img src={successicon} className='positionsuccessicon' alt={''}/> : null}
                     
+                {/* this triggers the function that checks if additional form is empty */} 
                     {index!==0 &&checkforempty(index) }
-
-                  <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
                    </div>
 
-        <div className='positioninputdiv'>
+          <div className='selectanddatediv'>
+        <div className='selectdiv'>
           <label className='positionlabel'>ხარისხი</label>
           {fetcheddegree && fetcheddegree.length > 0 && (
             <select
-            placeholder='rame'
-            className={`positioninput ${errors.educations && errors.educations[index] 
+            className={`selectstyle ${errors.educations && errors.educations[index] 
             && errors.educations[index].degree_id ? "input-error" : revalidatedData.educations && revalidatedData.educations[index]
             && revalidatedData.educations[index].degree_id ? "input-success" : null}`}
             {...register(`educations[${index}].degree_id`, { required: true,pattern: /^(?!none$).{1,}$/, onChange:(event)=> handleFormChange(event, index,'degree_id')})}
@@ -195,12 +197,11 @@ export default function Education () {
             <option key={key} value={degree.id}>
               {degree.title}
             </option>
-      ))}
-    </select>
-  )}
-                    
-</div> 
-                  <div className='datesdiv'>
+                ))}
+                  </select>
+                         )}              
+                  </div> 
+                  <div className='edudate'>
                   <label className='dateslabel'>დამთავრების რიცხვი</label>
                   <input type="date" name="due_date"
                   placeholder='mm/dd/yy'
@@ -210,7 +211,7 @@ export default function Education () {
                      && revalidatedData.educations[index].due_date ? "input-success" : null}`}
                   {...register(`educations[${index}].due_date`, { required: true, onChange:(event)=> handleFormChange(event, index,'due_date')})}/>
                   </div>
-                 
+                 </div>
 
                     <div className='descriptiondiv'>
                       <label className='labeldescription'>აღწერა</label>

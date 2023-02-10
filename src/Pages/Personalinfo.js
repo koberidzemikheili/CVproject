@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import erroricon from '../images/erroricon.png';
 import successicon from '../images/successicon.png';
+import ResetButton from '../ResetButton';
 export default function Personalinfo () {
 
   const [Details, setDetails] = useContext(UserContext);
@@ -68,6 +69,7 @@ const handleImage = async (e) => {
                 <div className='headline'>პირადი ინფო</div>
                 <div className='pagenumber'>1/3</div>
                 <hr className='firsthr'/>
+                <ResetButton />
                 <form onSubmit={handleSubmit(onSubmit)}>
                 
                     <div className='namediv'>

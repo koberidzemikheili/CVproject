@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import erroricon from '../images/erroricon.png';
 import successicon from '../images/successicon.png';
 import Displaycv from '../Displaycv';
+import ResetButton from '../ResetButton';
 export default function Experience () {
 
     const [Details, setDetails] = useContext(UserContext);
@@ -103,6 +104,7 @@ export default function Experience () {
                 <div className='headline'>გამოცდილება</div>
                 <div className='pagenumber'>2/3</div>
                 <hr className='firsthr'/>
+                <ResetButton />
                 <form onSubmit={handleSubmit(onSubmit)}>
             <div  className='heightsetterforform'>
            
@@ -119,12 +121,10 @@ export default function Experience () {
                     && errors.experiences[index].position ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
                      && revalidatedData.experiences[index].position ? "input-success" : null}`}
                     {...register(`experiences[${index}].position`, { required: true, pattern:/^.{3,}$/, onChange:(event)=> handleFormChange(event, index,'position')})}/>
+                    <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
                     {errors.experiences && errors.experiences[index] && errors.experiences[index].position ? <img src={erroricon} className='positionerroricon' alt={''}/> : revalidatedData.experiences && revalidatedData.experiences[index] && revalidatedData.experiences[index].position ? <img src={successicon} className='positionsuccessicon' alt={''}/> : null}
-                    
+              {/* this triggers the function that checks if additional form is empty */}
                     {index!==0 &&checkforempty(index)}
-                    
-
-                  <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
                    </div>
 
                    <div className='positioninputdiv'>
@@ -138,8 +138,9 @@ export default function Experience () {
                       && errors.experiences[index].employer ? "input-error" : revalidatedData.experiences && revalidatedData.experiences[index]
                        && revalidatedData.experiences[index].employer ? "input-success" : null}`}
                        {...register(`experiences[${index}].employer`, { required: true, pattern:/^.{3,}$/, onChange:(event)=> handleFormChange(event, index,'employer')})}/>
+                       <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
                     {errors.experiences && errors.experiences[index] && errors.experiences[index].employer ? <img src={erroricon} className='positionerroricon' alt={''}/> : revalidatedData.experiences && revalidatedData.experiences[index] && revalidatedData.experiences[index].employer ? <img src={successicon} className='positionsuccessicon' alt={''}/> : null}
-                  <small className='positionsmall'>მინიმუმ 2 სიმბოლო</small>
+                  
                   </div>
 
                   <div className='datesinrow'>

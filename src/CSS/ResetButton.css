@@ -1,0 +1,19 @@
+.resetbuttonstyle{
+    background-color: transparent;
+    border-color: transparent;
+}
+.circleimgstyle{
+position: absolute;
+width: 40px;
+height: 40px;
+left: 48px;
+top: 45px;
+}
+.arrowimgstyle{
+position: absolute;
+width: 9.21px;
+height: 16px;
+left: 62px;
+top: 57px;
+
+}
