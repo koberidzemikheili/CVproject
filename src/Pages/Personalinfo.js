@@ -11,7 +11,6 @@ import ResetButton from '../ResetButton';
 export default function Personalinfo () {
 
   const [Details, setDetails] = useContext(UserContext);
-  const [Trigger, setTrigger] = useContext(UserContext);
   const [datafromlocal, setData] = useState(JSON.parse(localStorage.getItem("Details")));
   const {
     register,

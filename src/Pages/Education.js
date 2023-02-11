@@ -9,11 +9,13 @@ import successicon from '../images/successicon.png';
 import Displaycv from '../Displaycv';
 import axios from 'axios';
 import ResetButton from '../ResetButton';
+import { FinalDataContext } from '../FinalDataContext';
 export default function Education () {
     
     const [Details, setDetails] = useContext(UserContext);
     const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("Details")));
     const [fetcheddegree,setFetcheddegree] = useContext(FetchedDegreeContext);
+    const [FinalData, setFinalData] = useContext(FinalDataContext);
     const [formFields, setFormFields] = useState(
         datafromlocal && datafromlocal.educations
           ? datafromlocal.educations
@@ -70,7 +72,7 @@ export default function Education () {
         setFormFields(data)
       }
       const routeChange = () =>{ 
-        let path = `/education`; 
+        let path = '/resume'; 
         navigate(path);
         
       }
@@ -103,21 +105,44 @@ export default function Education () {
       };
       
       //checks if DataURL was replaced in the Details with blob
-      if (typeof Details.image=== 'object') createBlogPost(Details)
+      //if (typeof Details.image=== 'object') createBlogPost(Details)
 
       //sends post request to server
-      function createBlogPost(data) {
-      
-        axios.post('https://resume.redberryinternship.ge/api/cvs', data, {
+      async function createBlogPost(data) {
+        const response = await axios.post('https://resume.redberryinternship.ge/api/cvs', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        })
-        .then((response) => {
+        });
+        
+        if (response.status === 201) {
+          setFinalData(response.data);
+        } else {
           console.log(response);
-        })
-        .catch((error) => console.log(error.response));
+        }
       }
+      
+      //when image in details gets replaced with blob instance calls the function which sends post to server
+      useEffect(() => {
+        if (Details.image instanceof Blob) {
+          createBlogPost(Details);
+          
+        }
+      }, [Details]);
+
+      //when finaldata state is changed from undefined to our data that we recieved from server we clear old data and upload new to localstorage and navigate to resume page
+      
+      useEffect(() => {
+        console.log(FinalData);
+        if (typeof FinalData !== "undefined") {
+          localStorage.clear();
+          localStorage.setItem("FinalData", JSON.stringify(FinalData));
+          routeChange();
+        }
+
+      }, [FinalData]);
+      
+      
       //triggers image update 
       const onSubmit =() => {
         handleUpdateImage(dataURLToBlob());

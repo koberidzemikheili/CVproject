@@ -15,7 +15,7 @@ return (
     <img className='redberrylogo' src={LOGO}/> 
     <hr className='firstline'/>
     <img className='logoback' src={LOGOBACK}/> 
-    <button className='welcomebutton'><div className='welcomebuttontext' onClick={()=>routeChange()}>რეზიუმეს დამატება</div></button>
+    <button className='welcomebutton' onClick={()=>routeChange()}><div className='welcomebuttontext'>რეზიუმეს დამატება</div></button>
 
     </div>
 )

@@ -1,5 +1,5 @@
 import './CSS/Displaycv.css';
-import React, { useContext,useState,useEffect,useMemo} from "react";
+import React, { useContext,useState,useEffect} from "react";
 import Vector from './images/Vector.png';
 import Vectorphone from './images/Vectorphone.png';
 import logothird from './images/LOGO3.png';
@@ -64,7 +64,7 @@ const Displaycv = () => {
           
           {experience && <hr className='experiencehr'/>}
           {experience?.position && <div className='position'>გამოცდილება</div>}
-          <div className='positiontext'>{experience?.position}{experience?.employer}</div>
+          <div className='textandemployerdiv'><div className='positiontext'>{experience?.position}</div><div className='positiontext'>{experience?.employer}</div></div>
           <div className='dates'>{experience.start_date} {experience.due_date}</div>
           <div className='descriptiontext'>{experience?.description}</div>
           </div>
@@ -82,8 +82,8 @@ const Displaycv = () => {
           <div className='dates'>{education.due_date}</div>
           <div className='descriptiontext'>{education?.description}</div>
           </div> ))}
-      <img src={logothird} alt='redberylogo' className='logothird'></img>
     </div>
+    <img src={logothird} alt='redberylogo' className='logothird'></img>
     </div>
   );
 };

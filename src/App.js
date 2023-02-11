@@ -5,11 +5,14 @@ import Personalinfo from './Pages/Personalinfo';
 import Experience from './Pages/Experience';
 import {UserProvider} from './UserContext';
 import Education from './Pages/Education';
+import Resume from './Pages/Resume';
 import { FetchedDegreeProvider } from './FetchedDegreeContext';
+import { FinalDataProvider } from './FinalDataContext';
 
 function App() {
   return (
     <>
+    <FinalDataProvider>
     <FetchedDegreeProvider>
     <UserProvider>
     <Routes>
@@ -17,9 +20,11 @@ function App() {
       <Route path="/personalinfo" element={<Personalinfo/>}/>
       <Route path="/experience" element={<Experience/>}/>
       <Route path="/education" element={<Education/>}/>
+      <Route path="/resume" element={<Resume/>}/>
     </Routes>
     </UserProvider>
     </FetchedDegreeProvider>
+    </FinalDataProvider>
     </>
   );
 }
