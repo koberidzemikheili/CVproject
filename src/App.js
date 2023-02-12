@@ -8,10 +8,12 @@ import Education from './Pages/Education';
 import Resume from './Pages/Resume';
 import { FetchedDegreeProvider } from './FetchedDegreeContext';
 import { FinalDataProvider } from './FinalDataContext';
+import AuthContextProvider from './AuthContext';
 
 function App() {
   return (
     <>
+    <AuthContextProvider>
     <FinalDataProvider>
     <FetchedDegreeProvider>
     <UserProvider>
@@ -25,6 +27,8 @@ function App() {
     </UserProvider>
     </FetchedDegreeProvider>
     </FinalDataProvider>
+    </AuthContextProvider>
+   
     </>
   );
 }

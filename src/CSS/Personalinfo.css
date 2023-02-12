@@ -343,6 +343,16 @@ margin-left: 5px;
     position: relative;
     bottom: 35px;
 }
+.imgerroricon{
+    left: 540px;
+    position: relative;
+    top: 303px;  
+}
+.imgsuccessicon{
+    left: 540px;
+    position: relative;
+    top: 303px;
+}
 .submitbutton1{
 display: flex;
 flex-direction: row;
@@ -356,7 +366,7 @@ width: 151px;
 height: 48px;
 background: #6B40E3;
 border-radius: 4px;
-margin-top: 900px;
+margin-top: 875px;
 }
 .submitbuttontext1{
 width: 81px;

@@ -10,12 +10,16 @@ import Displaycv from '../Displaycv';
 import axios from 'axios';
 import ResetButton from '../ResetButton';
 import { FinalDataContext } from '../FinalDataContext';
+import {AuthContext} from '../AuthContext';
 export default function Education () {
     
     const [Details, setDetails] = useContext(UserContext);
     const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("Details")));
     const [fetcheddegree,setFetcheddegree] = useContext(FetchedDegreeContext);
     const [FinalData, setFinalData] = useContext(FinalDataContext);
+    const { third,fourth } = useContext(AuthContext);
+    const [thirdpageauth, setThirdpageauth] = third;
+    const [fourthpageauth, setFourthpageauth] = fourth;
     const [formFields, setFormFields] = useState(
         datafromlocal && datafromlocal.educations
           ? datafromlocal.educations
@@ -39,23 +43,27 @@ export default function Education () {
         setFormFields(data);
         handleChange();
       }
-    
+      //handlechange sets input data into Details change of which triggers useeffect to store in localstorage
       const handleChange = () => {
         setDetails({...JSON.parse(localStorage.getItem("Details")), "educations": formFields});
       }
+      //this ueseffect checks if page has auth token set to true and saves Details into localstorage when change is made to it
       useEffect(() => {
+        if(!thirdpageauth){
+          navigate(-1);
+        }
         if (typeof Details !== "string") {
           localStorage.setItem("Details", JSON.stringify(Details));
           ;
         }
       }, [Details]);
-
+       //takes out data from localstorage so we can display them in input values and they are not lost after refresh
       useEffect(() => {
         setDatafromlocal(JSON.parse(localStorage.getItem("Details")));
     }, [Details]);
 
    
-    
+      //creates new form
       const addFields = () => {
         let object = {
           institute: '',
@@ -66,14 +74,18 @@ export default function Education () {
     
         setFormFields([...formFields, object])
       }
+      //removes fields its used to remove empty fields on submit click its called later in submit
       const removeFields = (index) => {
         let data = [...formFields];
         data.splice(index, 1)
         setFormFields(data)
       }
+      //changes route on submit sets auth token true for next page and saves it to localstorage
       const routeChange = () =>{ 
         let path = '/resume'; 
         navigate(path);
+        setFourthpageauth(true);
+        localStorage.setItem("fourthpageauth", JSON.stringify(true));
         
       }
       const routeBack = () => {
@@ -104,8 +116,7 @@ export default function Education () {
         });
       };
       
-      //checks if DataURL was replaced in the Details with blob
-      //if (typeof Details.image=== 'object') createBlogPost(Details)
+      
 
       //sends post request to server
       async function createBlogPost(data) {
@@ -133,7 +144,6 @@ export default function Education () {
       //when finaldata state is changed from undefined to our data that we recieved from server we clear old data and upload new to localstorage and navigate to resume page
       
       useEffect(() => {
-        console.log(FinalData);
         if (typeof FinalData !== "undefined") {
           localStorage.clear();
           localStorage.setItem("FinalData", JSON.stringify(FinalData));
@@ -170,6 +180,7 @@ export default function Education () {
         const data2 = await data.json();
         setFetcheddegree(data2);
     }
+    //useeffect for fetchfunction above its rendered once.
     useEffect(() => {
         fetchData();
         
@@ -253,7 +264,7 @@ export default function Education () {
               )})
             }
             <button  className='addfieldsbutton' type='button' onClick={addFields}><div className='addfieldsbuttontext'>მეტი გამოცდილების დამატება</div></button>
-            <div className='submitandbackbuttons'>
+            <div className='submitandbackbuttons2'>
           <button type='submit' className='submitbutton'><div className='submitbuttontext'>დასრულება</div></button>
           <button type='button' className='backbutton' onClick={onBack}><div className='submitbuttontext'>უკან</div></button>
           </div>

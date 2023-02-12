@@ -297,7 +297,14 @@ margin-right: 537px;
     flex-direction: row-reverse;
     width: 806px;
     margin-left: 151px;
-    margin-top: 68px;
+    margin-top: 80px;
+}
+.submitandbackbuttons2{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 806px;
+    margin-left: 151px;
+    margin-top: 223px;
 }
 
 .positionerroricon{

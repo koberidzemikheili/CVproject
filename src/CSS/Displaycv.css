@@ -103,13 +103,13 @@ color: #000000;
 .logothird{
 width: 42px;
 height: 42px;
-position: relative;
+position: absolute;
 bottom: 0;
-right: 0;
 margin-bottom: 44px;
 margin-left: 78px;
 margin-top: 14px;
 }
+
 .position{
     
 width: 143px;

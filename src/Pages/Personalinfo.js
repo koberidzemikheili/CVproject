@@ -8,10 +8,14 @@ import { useForm } from 'react-hook-form';
 import erroricon from '../images/erroricon.png';
 import successicon from '../images/successicon.png';
 import ResetButton from '../ResetButton';
+import {AuthContext} from '../AuthContext';
 export default function Personalinfo () {
 
   const [Details, setDetails] = useContext(UserContext);
   const [datafromlocal, setData] = useState(JSON.parse(localStorage.getItem("Details")));
+  const { first, second } = useContext(AuthContext);
+  const [firstpageauth, setFirstpageauth] = first;
+  const [secondpageauth, setSecondpageauth] = second;
   const {
     register,
     handleSubmit,
@@ -24,11 +28,13 @@ export default function Personalinfo () {
   const revalidatedData = watch();
   let navigate = useNavigate(); 
  
-
+  //in this useeffect we are checking if page has authentification set to true and also we are setting data to localstorage
   useEffect(() => {
+    if(!firstpageauth){
+      navigate(-1);
+    }
     if (typeof Details !== "string") {
       localStorage.setItem("Details", JSON.stringify(Details));
-      
     }
   }, [Details]);
    //for displaying in input fields that can stay after refresh
@@ -36,6 +42,7 @@ export default function Personalinfo () {
     setData(JSON.parse(localStorage.getItem("Details")));
 }, [Details]);
   
+//this function is taking uploaded image turning into dataurl and setting to Details dependency which saves it in localstorage on change in upper useeffect
 const handleImage = async (e) => {
   const file = e.target.files[0];
   if (file && file instanceof Blob) {
@@ -46,19 +53,29 @@ const handleImage = async (e) => {
     };
   }
 };
-   
+//this removes spaces from phone input and sets back into Details and localstorage 
+const removeSpaces = () => {
+  const value = datafromlocal.phone_number.replace(/\s/g, '');
+  setDetails({ ...JSON.parse(localStorage.getItem("Details")), phone_number:value });
+};
+   //this function adds input changes to Details and on its change its added to localstorage
     const handleChange = (e) => {
       const { name, value } = e.target;
       if (name === 'name' || name === 'surname' || name ==='image' || name ==='about_me' || name ==='email'|| name ==='phone_number') {
         setDetails({...JSON.parse(localStorage.getItem("Details")), [name]: value});
       }
     };
+    //this function changes path when its called also sets authentification token true for next page and saves it in localstorage
     const routeChange = () =>{ 
       let path = `/experience`; 
       navigate(path);
+      setSecondpageauth(true);
+      localStorage.setItem("secondpageauth", JSON.stringify(true));
       
     }
+    
     const onSubmit = () => {
+      removeSpaces();
       routeChange();
     };
 
@@ -94,6 +111,8 @@ const handleImage = async (e) => {
                     <input type="file" name="image" {...register("image", { required: true,onChange: (e) => handleImage(e)})} />
                         ატვირთვა
                         </label>
+                        {errors.image? <img src={erroricon} className='imgerroricon' alt={''} />: revalidatedData.image && revalidatedData.image.length? <img src={successicon} className='imgsuccessicon' alt={''} />: null}
+                  
                     <div className='aboutmediv'>
                     <label className='aboutmelabel input-success'>ჩემ შესახებ (არასავალდებულო)</label>
                     <textarea className='aboutmetextarea' placeholder='ზოგადი ინფო შენ შესახებ' name='about_me' value={datafromlocal?.about_me} onChange={handleChange}></textarea>
@@ -111,7 +130,7 @@ const handleImage = async (e) => {
                     <div className='phonediv'>
                     <label className='phonelabel'>მობილურის ნომერი</label>
                     <input type="text" name="phone_number" value={datafromlocal?.phone_number} className={`phoneinput ${errors.phone_number ? "input-error": revalidatedData.phone_number ? "input-success" : null}`} placeholder='+995 555 555 555'
-                    {...register("phone_number", { required: true,pattern: /^(\+\d{3})(\d{3})(\d{2})(\d{2})(\d{2})$/,onChange: (e) => handleChange(e)})}
+                    {...register("phone_number", { required: true,pattern: /^(\+\d{3})\s(\d{3})\s(\d{2})\s(\d{2})\s(\d{2})$/,onChange: (e) => handleChange(e)})}
                     ></input>
                     {errors.phone_number ? <img src={erroricon} className='emailerroricon' alt={''} /> : revalidatedData.phone_number ? <img src={successicon} className='emailsuccessicon' alt={''} /> : null}
                     <small className='smallphone'>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</small>

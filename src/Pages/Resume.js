@@ -1,20 +1,28 @@
 import '../CSS/Displaycv.css'
-import React, { useState,useEffect} from "react";
+import React, { useContext, useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Vector from '../images/Vector.png';
 import xbutton from '../images/xbutton.png';
 import Vectorphone from '../images/Vectorphone.png';
 import logothird from '../images/LOGO3.png';
 import ResetButton from '../ResetButton';
+import {AuthContext} from '../AuthContext';
 export default function Resume (){
     const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("FinalData")));
     const [experiencesArray, setExperiencesArray] = useState([]);
     const [educationsArray, seteducationsArray] = useState([]);
     const [showModal, setShowModal] = useState(true);
-
+    const { fourth } = useContext(AuthContext);
+    const [fourthpageauth, setFourthpageauth] = fourth;
+    let navigate = useNavigate();
+    //in this useeffect we are taking data from localstorage using datafromlocal and also we are chechking if this page has authentification set to true.
     useEffect(() => {
+      if(!fourthpageauth){
+        navigate(-1);
+      }
         setDatafromlocal(JSON.parse(localStorage.getItem("FinalData")));
     }, [localStorage.getItem("FinalData")]);
-    
+    //in this useeffect we are taking data from the datafromlocal which is data from localstorage and we are setting the arrays educations and experiences using usestate.
     useEffect(() => {
         if (datafromlocal && datafromlocal.experiences) {
           let experiencesArray = [];

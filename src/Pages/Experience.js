@@ -7,10 +7,14 @@ import erroricon from '../images/erroricon.png';
 import successicon from '../images/successicon.png';
 import Displaycv from '../Displaycv';
 import ResetButton from '../ResetButton';
+import {AuthContext} from '../AuthContext';
 export default function Experience () {
 
     const [Details, setDetails] = useContext(UserContext);
     const [datafromlocal, setDatafromlocal] = useState(JSON.parse(localStorage.getItem("Details")));
+    const { second, third } = useContext(AuthContext);
+    const [thirdpageauth, setThirdpageauth] = third;
+    const [secondpageauth, setSecondpageauth] = second;
     const [formFields, setFormFields] = useState(
         datafromlocal && datafromlocal.experiences
           ? datafromlocal.experiences
@@ -34,23 +38,28 @@ export default function Experience () {
         setFormFields(data);
         handleChange();
       }
-    
+      //handlechange sets input data into Details change of which triggers useeffect to store in localstorage
       const handleChange = () => {
         setDetails({...JSON.parse(localStorage.getItem("Details")), "experiences": formFields});
       }
+      //this ueseffect checks if page has auth token set to true and saves Details into localstorage when change is made to it
       useEffect(() => {
+        if(!secondpageauth){
+          navigate(-1);
+        }
         if (typeof Details !== "string") {
           localStorage.setItem("Details", JSON.stringify(Details));
           ;
         }
       }, [Details]);
 
+      //takes out data from localstorage so we can display them in input values and they are not lost after refresh
       useEffect(() => {
         setDatafromlocal(JSON.parse(localStorage.getItem("Details")));
     }, [Details]);
 
    
-    
+    //creates new form
       const addFields = () => {
         let object = {
           position: '',
@@ -62,14 +71,19 @@ export default function Experience () {
     
         setFormFields([...formFields, object])
       }
+    //removes fields its used to remove empty fields on submit click its called later in submit
       const removeFields = (index) => {
         let data = [...formFields];
         data.splice(index, 1)
         setFormFields(data)
       }
+
+      //changes route on submit sets auth token true for next page and saves it to localstorage
       const routeChange = () =>{ 
         let path = `/education`; 
         navigate(path);
+        setThirdpageauth(true);
+      localStorage.setItem("thirdpageauth", JSON.stringify(true));
         
       }
       const routeBack = () => {
