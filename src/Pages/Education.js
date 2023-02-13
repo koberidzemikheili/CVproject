@@ -79,12 +79,17 @@ export default function Education () {
         let data = [...formFields];
         data.splice(index, 1)
         setFormFields(data)
+        setDetails({
+          ...datafromlocal,
+          "educations": data
+        });
       }
       //changes route on submit sets auth token true for next page and saves it to localstorage
       const routeChange = () =>{ 
         let path = '/resume'; 
         navigate(path);
         setFourthpageauth(true);
+
         localStorage.setItem("fourthpageauth", JSON.stringify(true));
         
       }
@@ -183,7 +188,6 @@ export default function Education () {
     //useeffect for fetchfunction above its rendered once.
     useEffect(() => {
         fetchData();
-        
       }, []);
      
     

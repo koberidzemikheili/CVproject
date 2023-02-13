@@ -79,7 +79,7 @@ export default function Resume (){
         
             {education  && <hr className='experiencehr'/>}
             {education  && <div className='position'>განათლება</div>}
-            <div className='positiontext'>{education?.institute}{education?.degree}</div>
+            <div className='textandemployerdiv'><div className='positiontext'>{education?.institute}</div><div className='degreetext'>{education?.degree}</div></div>
             <div className='dates'>{education.due_date}</div>
             <div className='descriptiontext'>{education?.description}</div>
             </div> ))}  

@@ -76,6 +76,10 @@ export default function Experience () {
         let data = [...formFields];
         data.splice(index, 1)
         setFormFields(data)
+        setDetails({
+          ...datafromlocal,
+          "experiences": data
+        });
       }
 
       //changes route on submit sets auth token true for next page and saves it to localstorage

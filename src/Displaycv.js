@@ -75,10 +75,10 @@ const Displaycv = () => {
     {educationsArray.map((education, index) => (
         <div key={index}>
           
-          {finddegree(education?.degree)}
+          {finddegree(education?.degree_id)}
           {education  && <hr className='experiencehr'/>}
           {education  && <div className='position'>განათლება</div>}
-          <div className='positiontext'>{education?.institute}{founddegree && founddegree}</div>
+          <div className='textandemployerdiv'><div className='positiontext'>{education?.institute}</div><div className='degreetext'>{founddegree && founddegree}</div></div>
           <div className='dates'>{education.due_date}</div>
           <div className='descriptiontext'>{education?.description}</div>
           </div> ))}
