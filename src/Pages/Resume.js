@@ -64,8 +64,8 @@ export default function Resume (){
         {experiencesArray.map((experience, index) => (
           <div key={index}>
             
-            {datafromlocal.experience && <hr className='experiencehr'/>}
-            {experience?.position && <div className='position'>გამოცდილება</div>}
+            {index === 0 && datafromlocal.experience && <hr className='experiencehr'/>}
+            {index === 0 && experience &&   <div className='position'>გამოცდილება</div>}
             <div className='textandemployerdiv'><div className='positiontext'>{experience?.position}</div><div className='positiontext'>{experience?.employer}</div></div>
             <div className='dates'>{experience.start_date} {experience.due_date}</div>
             <div className='descriptiontext'>{experience?.description}</div>
@@ -77,8 +77,8 @@ export default function Resume (){
       {educationsArray.map((education, index) => (
           <div key={index}>
         
-            {education  && <hr className='experiencehr'/>}
-            {education  && <div className='position'>განათლება</div>}
+            {index === 0 && education  && <hr className='experiencehr'/>}
+            {index === 0 && education &&   <div className='position'>განათლება</div>}
             <div className='textandemployerdiv'><div className='positiontext'>{education?.institute}</div><div className='degreetext'>{education?.degree}</div></div>
             <div className='dates'>{education.due_date}</div>
             <div className='descriptiontext'>{education?.description}</div>
